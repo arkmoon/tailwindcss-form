@@ -46,11 +46,11 @@ export default function App() {
                       <label className="font-bold text-lg text-white ">Public Key</label>
                       <input
                         className="border rounded-lg py-3 px-3 mt-2 mb-8 bg-black border-white placeholder-white-500 text-white"
-                        id="publicKey"
+                        id="addresses"
                         maxLength="70"
                         placeholder="Public Key"
                         type="text"
-                        {...register('publicKey', {required: true, maxLength: 70})}
+                        {...register('addresses', {required: true, maxLength: 70})}
                       />
                       {
                         (errors?.id === 'blah')
@@ -63,11 +63,11 @@ export default function App() {
                       <label className="font-bold text-lg text-white ">Excluded Transaction</label>
                       <input
                         className="border rounded-lg py-3 px-3 mt-2 mb-8 bg-black border-white placeholder-white-500 text-white"
-                        id="excludeTransaction"
+                        id="exceptions"
                         placeholder="Excluded Transaction"
                         maxLength="70"
                         type="text"
-                        {...register('excludeTransaction', {required: true, maxLength: 70})}
+                        {...register('exceptions', {maxLength: 70})}
                       />
                       {
                         (errors?.id === 'blah')
