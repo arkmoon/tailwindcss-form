@@ -14,8 +14,8 @@ export default function App() {
     } = data;
 
     axios.post(`${submissionUrl}`, {
-      addresses: [...addresses || ''],
-      exceptions: [...exceptions || ''],
+      addresses: [addresses || ''],
+      exceptions: [exceptions || ''],
       network: network || '',
     }).then((response) => {
       console.log(response);
