@@ -5,8 +5,18 @@ import FeatherLogo from './img/feather.png';
 
 export default function App() {
   function onSubmit(data) {
+    console.log('data', data);
+
+    const {
+      addresses,
+      exceptions,
+      network,
+    } = data;
+
     axios.post(`${submissionUrl}`, {
-      ...data,
+      addresses: [...addresses || ''],
+      exceptions: [...exceptions || ''],
+      network: network || '',
     }).then((response) => {
       console.log(response);
     }).catch((error) => {
