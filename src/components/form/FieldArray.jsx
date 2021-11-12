@@ -27,11 +27,11 @@ function FieldArray({
     name: id,
   });
 
-  React.useEffect(() => {
-    if (fields.length === 0) {
-      append({ value: '' });
-    }
-  });
+  // React.useEffect(() => {
+  //   if (fields.length === 0) {
+  //     append({ value: '' });
+  //   }
+  // });
 
   return (
     <>
@@ -49,7 +49,7 @@ function FieldArray({
 
                   <div className="flex">
                     <input
-                      className="border rounded-lg py-2 px-3 text-white bg-black w-4/5"
+                      className="border rounded-lg py-2 px-3 w-4/5"
                       id={`${displayName}_${index}`}
                       maxLength="100"
                       name={`${displayName}_${index}`}
@@ -66,7 +66,7 @@ function FieldArray({
                           }
                         } else {
                           if (isRequired) {
-                            setError(id, { type: 'required', message: `At least one ${displayName} is required.`}, { shouldFocus: true });
+                            setError(id, { type: 'required', message: `At least one ${displayName} is required.`});
                           }
                           remove(index);
                           append({ value: '' });
@@ -82,7 +82,7 @@ function FieldArray({
         }
       </div>
       <button
-        className="float-right pr-5 text-white"
+        className="float-right pr-5"
         type="button"
         onClick={() => {
           append({ value: '' });
