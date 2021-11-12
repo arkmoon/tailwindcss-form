@@ -60,10 +60,10 @@ export default function App() {
 
   return (
     <div>
-      <div className="w-full bg-black">
+      <div className="w-full bg-blue">
         <div className="container mx-auto h-20 md:h-24">
           <div className="w-full flex items-center justify-between">
-            <a className="inline-block hover:text-underline text-center h-10 p-2 md:h-auto md:p-4" href="/">
+            <a className="inline-block hover:text-underline text-center h-10 p-2 md:h-auto md:p-4" href="https://ark.io">
               <img className="h-16 w-auto" src={ArkLogo} alt="ARK Ecosystem logo" />
             </a>
             <div className="flex w-1/2 justify-end content-center">
