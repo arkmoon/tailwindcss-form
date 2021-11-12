@@ -17,7 +17,7 @@ export default function Form() {
     axios.post(`${submissionUrl}`, {
       addresses: addresses?.filter(({value}) => value).map(({value}) => value),
       exceptions: exceptions?.filter(({value}) => value).map(({value}) => value),
-      ${network},
+      '${network}',
     }).then((response) => {
       console.log(response);
     }).catch((error) => {
