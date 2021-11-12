@@ -42,12 +42,22 @@ export default function App() {
         // Display the results.
         setResults(response?.data);
       } else {
-        setError(<Alert />);
+        setError(
+          <div className="container mx-auto">
+            <Alert />
+          </div>
+        );
+        setResults(null);
       }
       // setResults(response);
     }).catch((e) => {
       console.error(e);
-      setError(<Alert />);
+      setError(
+        <div className="container mx-auto">
+          <Alert />
+        </div>
+      );
+      setResults(null);
     });
   }
 

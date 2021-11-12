@@ -70,7 +70,9 @@ function Report({
               tables
             )
             : (
-              <Alert />
+              <div className="container mx-auto">
+                <Alert />
+              </div>
             )
         }
       </div>
