@@ -12,12 +12,12 @@ export default function Form() {
     } = data;
 
     const submissionUrl = import.meta.env.VITE_SUBMIT_URL;
-    const network = import.meta.env.VITE_NETWORK;
+    const dposNetwork = import.meta.env.VITE_NETWORK;
 
     axios.post(`${submissionUrl}`, {
       addresses: addresses?.filter(({value}) => value).map(({value}) => value),
       exceptions: exceptions?.filter(({value}) => value).map(({value}) => value),
-      '${network}',
+      '${dposNetwork}',
     }).then((response) => {
       console.log(response);
     }).catch((error) => {
