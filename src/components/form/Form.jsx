@@ -12,11 +12,12 @@ export default function Form() {
     } = data;
 
     const submissionUrl = import.meta.env.VITE_SUBMIT_URL;
+    const network = import.meta.env.VITE_NETWORK;
 
     axios.post(`${submissionUrl}`, {
       addresses: addresses?.filter(({value}) => value).map(({value}) => value),
       exceptions: exceptions?.filter(({value}) => value).map(({value}) => value),
-      network,
+      ${network},
     }).then((response) => {
       console.log(response);
     }).catch((error) => {
@@ -47,12 +48,6 @@ export default function Form() {
             id="exceptions"
             isRequired={false}
           />
-
-          <div className="flex flex-col mb-4">
-            <label className="mb-2 font-bold text-lg" htmlFor="network">Network</label>
-            <input className="border rounded-lg py-2 px-3 text-white bg-black" {...register('network', { required: true })} maxLength="100" placeholder="e.g. ark_mainnet" name="network" id="network"/>
-
-          </div>
 
           <button className="border rounded-lg text-white bg-black font-bold uppercase text-lg mx-auto p-4 w-full mt-8" type="submit">Submit</button>
         </form>
