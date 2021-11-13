@@ -14,54 +14,63 @@ import { scrollTo } from './common/utils';
 
 export default function App() {
   function handleOnSubmit(data) {
-    // Start loading.
-    setIsLoading(true);
 
-    const {
-      addresses = [],
-      exceptions = [],
-    } = data;
+    const addresses = (data?.addresses) ? data?.addresses?.filter(({value}) => value).map(({value}) => value) : [];
+    const exceptions = (data?.exceptions) ? data?.exceptions?.filter(({value}) => value).map(({value}) => value) : [];
 
     // Environment Variables.
     const network = import.meta.env.VITE_NETWORK;
     const submissionUrl = import.meta.env.VITE_SUBMIT_URL;
 
-    axios.post(`${submissionUrl}`, {
-      addresses: addresses?.filter(({value}) => value).map(({value}) => value),
-      exceptions: exceptions?.filter(({value}) => value).map(({value}) => value),
-      network,
-    }).then((response) => {
-      if (
-        response?.status === 200
-        && response?.data
-        && !response?.data?.Error
-      ) {
-        // Clear the error if any.
-        setError(null);
+    // Ensure they have at least 1 address.
+    if (addresses.length) {
+      // Start loading.
+      setIsLoading(true);
 
-        // Stop loading.
-        setIsLoading(false);
+      axios.post(`${submissionUrl}`, {
+        addresses,
+        exceptions,
+        network,
+      }).then((response) => {
+        if (
+          response?.status === 200
+          && response?.data
+          && !response?.data?.Error
+        ) {
+          // Clear the error if any.
+          setError(null);
 
-        // Display the results.
-        setResults(response?.data);
-      } else {
-        setError(
-          <div className="container mx-auto">
+          // Stop loading.
+          setIsLoading(false);
+
+          // Display the results.
+          setResults(response?.data);
+
+          // Scroll to results.
+          navigate('#results-tables');
+          scrollTo('results-tables');
+        } else {
+          setError(
             <Alert />
-          </div>
+          );
+          setResults(null);
+
+          // Scroll to error.
+          navigate('#results-error');
+          scrollTo('results-error');
+        }
+      }).catch((e) => {
+        console.error(e);
+        setError(
+          <Alert />
         );
         setResults(null);
-      }
-      // setResults(response);
-    }).catch((e) => {
-      console.error(e);
-      setError(
-        <div className="container mx-auto">
-          <Alert />
-        </div>
-      );
-      setResults(null);
-    });
+
+        // Scroll to error.
+        navigate('#results-error');
+        scrollTo('results-error');
+      });
+    }
   }
 
   function handleGetStarted(hash) {
@@ -144,7 +153,7 @@ export default function App() {
       {
         results
           ? (
-            <section className="bg-white w-full">
+            <section className="bg-white w-full" id="results-tables">
               <div className="container mx-auto">
                 <Report results={results} />
               </div>
