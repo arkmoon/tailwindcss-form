@@ -1,6 +1,5 @@
 import React from 'react';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
 import { useForm, FormProvider } from 'react-hook-form';
 import FeatherLogo from './img/feather.png';
 import ArkmoonLogo from './img/arkmoon.png';
@@ -15,8 +14,8 @@ import { scrollTo } from './common/utils';
 export default function App() {
   function handleOnSubmit(data) {
 
-    const addresses = (data?.addresses) ? data?.addresses?.filter(({value}) => value).map(({value}) => value) : [];
-    const exceptions = (data?.exceptions) ? data?.exceptions?.filter(({value}) => value).map(({value}) => value) : [];
+    const addresses = (data?.addresses && data?.addresses?.length) ? data?.addresses?.filter(({value}) => value).map(({value}) => value) : [];
+    const exceptions = (data?.exceptions && data?.exceptions?.length) ? data?.exceptions?.filter(({value}) => value).map(({value}) => value) : [];
 
     // Environment Variables.
     const network = import.meta.env.VITE_NETWORK;
@@ -47,7 +46,6 @@ export default function App() {
           setResults(response?.data);
 
           // Scroll to results.
-          navigate('#results-tables');
           scrollTo('results-tables');
         } else {
           setError(
@@ -56,7 +54,6 @@ export default function App() {
           setResults(null);
 
           // Scroll to error.
-          navigate('#results-error');
           scrollTo('results-error');
         }
       }).catch((e) => {
@@ -67,7 +64,6 @@ export default function App() {
         setResults(null);
 
         // Scroll to error.
-        navigate('#results-error');
         scrollTo('results-error');
       });
     }
@@ -77,7 +73,6 @@ export default function App() {
     return function(e) {
       e && e?.preventDefault();
 
-      navigate(`#${hash}`);
 
       scrollTo(hash);
     };
@@ -91,7 +86,6 @@ export default function App() {
   const methods = useForm();
 
   // React Router.
-  let navigate = useNavigate();
 
   return (
     <div>
