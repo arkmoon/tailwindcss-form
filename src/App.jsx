@@ -115,7 +115,7 @@ export default function App() {
               ARK Income Estimator
             </h1>
             <p className="leading-normal text-2xl mb-8">
-              Figuring out how much you owe in crypto taxes is tedious. Let us help by calculating how much income you&rsquo;ve earned from ARK staking rewards.
+              Figuring out how much you owe in crypto taxes is tedious. Let us help by estimating your income you&rsquo;ve earned from ARK staking rewards and account activity.
             </p>
             <a
               href="#address-form"
