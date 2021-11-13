@@ -92,7 +92,7 @@ export default function App() {
       <div id="top-menu" className="-top-full shadow-md w-full fixed transition-all duration-500 z-50" style={{ backgroundColor: '#1d0d23'}}>
         <div className="container mx-auto h-20 md:h-24">
           <div className="w-full flex items-center justify-between">
-            <a className="flex items-center justify-between hover:text-underline text-center h-auto p-2 md:p-4" href="/">
+            <a className="flex items-center justify-between hover:text-underline text-center h-auto p-2 md:p-4" href="https://ark.io">
               <img className="h-16 w-auto" src={ArkLogo} alt="ARK Ecosystem logo" />
               <h1 className="text-white text-xl ml-4" id="nav-title">ARK Income Estimator</h1>
             </a>
