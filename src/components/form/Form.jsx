@@ -86,8 +86,8 @@ function Form({
                 </div>
 
                 <div className="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto">
-                  <div className="inline-block min-w-full shadow rounded-lg overflow-hidden">
-                    <h3>Addresses</h3>
+                  <div className="inline-block min-w-full shadow rounded-lg overflow-hidden p-4">
+                    <h3 className="text-xl font-semibold">Addresses</h3>
                     {
                       (currentFormValues?.addresses?.length)
                         ? (
@@ -99,14 +99,23 @@ function Form({
                                 ))
                               }
                             </ul>
-                            <h3>Excluded Transactions</h3>
-                            <ul>
-                              {
-                                currentFormValues?.exceptions.map((exception, i) => (
-                                  <li key={`exception_${i}`}>{exception?.value || ''}</li>
-                                ))
-                              }
-                            </ul>
+
+                            {
+                              (currentFormValues?.exceptions.length)
+                                ? (
+                                  <>
+                                    <h3 className="text-xl font-semibold mt-4">Excluded Transactions</h3>
+                                    <ul>
+                                      {
+                                        currentFormValues?.exceptions.map((exception, i) => (
+                                          <li key={`exception_${i}`}>{exception?.value || ''}</li>
+                                        ))
+                                      }
+                                    </ul>
+                                  </>
+                                )
+                                : null
+                            }
                           </>
                         )
                         : (
