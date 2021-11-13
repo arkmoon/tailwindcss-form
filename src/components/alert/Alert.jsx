@@ -13,7 +13,7 @@ function Alert({
   };
 
   return (
-    <div role="alert">
+    <div className="container mx-auto" id="results-error" role="alert" tabIndex="-1">
       <div className={`${alertColor[style][0]} ${alertColor[style][1]} font-bold rounded-t px-4 py-2`}>
         <h2>{ title }</h2>
       </div>

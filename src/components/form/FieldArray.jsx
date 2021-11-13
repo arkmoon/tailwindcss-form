@@ -27,11 +27,11 @@ function FieldArray({
     name: id,
   });
 
-  // React.useEffect(() => {
-  //   if (fields.length === 0) {
-  //     append({ value: '' });
-  //   }
-  // });
+  React.useEffect(() => {
+    if (fields.length === 0) {
+      append({ value: '' });
+    }
+  });
 
   return (
     <>

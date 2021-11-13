@@ -17,5 +17,17 @@
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
+
+    <script>
+      window.addEventListener("scroll", bringmenu);
+
+      function bringmenu() {
+        if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+          document.getElementById("top-menu").style.top = "0";
+        } else {
+          document.getElementById("top-menu").style.top = "-100vh";
+        }
+      }
+    </script>
   </body>
 </html>

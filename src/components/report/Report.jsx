@@ -3,29 +3,38 @@ import PropTypes from 'prop-types';
 import DatatablePage from './DatatablePage';
 import { fileOutput } from './FileOutput';
 import Alert from '../alert/Alert';
-import { columnLabels } from '../../constants/constants';
+import { columnLabels } from '../../common/utils';
 
 function Report({
   results = {},
 }) {
   function dataTable(title, data) {
-    const columns = data?.columns.map((column) => {
-      return ({
-        label: columnLabels(column),
-        field: column,
-      });
-    });
+    const columns = (data?.columns && data?.columns?.length)
+      ? (
+        data?.columns.map((column) => {
+          return ({
+            label: columnLabels(column),
+            field: column,
+          });
+        })
+      )
+      : [];
 
-    const rows = data?.data?.map((row) => {
-      let result = {};
+    const rows = (data?.data && data?.data?.length)
+      ? (
+        data?.data?.map((row) => {
+          let result = {};
 
-      // Grab the headers for keys.
-      for(let i = 0, len = data?.columns.length; i < len; i++) {
-        result[data?.columns[i]] = row[i];
-      }
+          // Grab the headers for keys.
+          for(let i = 0, len = data?.columns.length; i < len; i++) {
+            result[data?.columns[i]] = row[i];
+          }
 
-      return result;
-    });
+          return result;
+        })
+      )
+      : []
+    ;
 
     return (
       <React.Fragment key={title}>

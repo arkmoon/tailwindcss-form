@@ -3,62 +3,79 @@ import axios from 'axios';
 import { useForm, FormProvider } from 'react-hook-form';
 import FeatherLogo from './img/feather.png';
 import ArkmoonLogo from './img/arkmoon.png';
+import HillsImg from './img/hills.svg';
 import AstroMan from './img/astroman.jpg';
 import ArkLogo from './img/ark-logo.png';
 import Form from './components/form/Form';
 import Report from './components/report/Report';
 import Alert from './components/alert/Alert';
+import { scrollTo } from './common/utils';
 
 export default function App() {
   function handleOnSubmit(data) {
-    // Start loading.
-    setIsLoading(true);
 
-    const {
-      addresses = [],
-      exceptions = [],
-    } = data;
+    const addresses = (data?.addresses && data?.addresses?.length) ? data?.addresses?.filter(({value}) => value).map(({value}) => value) : [];
+    const exceptions = (data?.exceptions && data?.exceptions?.length) ? data?.exceptions?.filter(({value}) => value).map(({value}) => value) : [];
 
     // Environment Variables.
     const network = import.meta.env.VITE_NETWORK;
     const submissionUrl = import.meta.env.VITE_SUBMIT_URL;
 
-    axios.post(`${submissionUrl}`, {
-      addresses: addresses?.filter(({value}) => value).map(({value}) => value),
-      exceptions: exceptions?.filter(({value}) => value).map(({value}) => value),
-      network,
-    }).then((response) => {
-      if (
-        response?.status === 200
-        && response?.data
-        && !response?.data?.Error
-      ) {
-        // Clear the error if any.
-        setError(null);
+    // Ensure they have at least 1 address.
+    if (addresses.length) {
+      // Start loading.
+      setIsLoading(true);
 
-        // Stop loading.
-        setIsLoading(false);
+      axios.post(`${submissionUrl}`, {
+        addresses,
+        exceptions,
+        network,
+      }).then((response) => {
+        if (
+          response?.status === 200
+          && response?.data
+          && !response?.data?.Error
+        ) {
+          // Clear the error if any.
+          setError(null);
 
-        // Display the results.
-        setResults(response?.data);
-      } else {
-        setError(
-          <div className="container mx-auto">
+          // Stop loading.
+          setIsLoading(false);
+
+          // Display the results.
+          setResults(response?.data);
+
+          // Scroll to results.
+          scrollTo('results-tables');
+        } else {
+          setError(
             <Alert />
-          </div>
+          );
+          setResults(null);
+
+          // Scroll to error.
+          scrollTo('results-error');
+        }
+      }).catch((e) => {
+        console.error(e);
+        setError(
+          <Alert />
         );
         setResults(null);
-      }
-      // setResults(response);
-    }).catch((e) => {
-      console.error(e);
-      setError(
-        <div className="container mx-auto">
-          <Alert />
-        </div>
-      );
-      setResults(null);
-    });
+
+        // Scroll to error.
+        scrollTo('results-error');
+      });
+    }
+  }
+
+  function handleGetStarted(hash) {
+    return function(e) {
+      e && e?.preventDefault();
+
+
+      scrollTo(hash);
+    };
   }
 
   // Local state for results.
@@ -68,19 +85,22 @@ export default function App() {
 
   const methods = useForm();
 
+  // React Router.
+
   return (
     <div>
-      <div className="w-full bg-black">
+      <div id="top-menu" className="-top-full shadow-md w-full fixed transition-all duration-500 z-50" style={{ backgroundColor: '#1d0d23'}}>
         <div className="container mx-auto h-20 md:h-24">
           <div className="w-full flex items-center justify-between">
-            <a className="inline-block hover:text-underline text-center h-10 p-2 md:h-auto md:p-4" href="https://ark.io">
+            <a className="flex items-center justify-between hover:text-underline text-center h-auto p-2 md:p-4" href="/">
               <img className="h-16 w-auto" src={ArkLogo} alt="ARK Ecosystem logo" />
+              <h1 className="text-white text-xl ml-4" id="nav-title">ARK Income Estimator</h1>
             </a>
             <div className="flex w-1/2 justify-end content-center">
-              <a className="inline-block hover:text-underline text-center h-10 p-2 md:h-auto md:p-4 transform hover:scale-125 duration-300 ease-in-out" href="https://arkdelegates.live/delegate/goose/contributions">
+              <a className="inline-block hover:text-underline text-center h-auto p-2 md:p-4 transform hover:scale-125 duration-300 ease-in-out" href="https://arkdelegates.live/delegate/goose/contributions">
                 <img className="h-16 w-auto" src={FeatherLogo} alt="Delegate Goose logo" />
               </a>
-              <a className="inline-block hover:text-underline text-center h-10 p-2 md:h-auto md:p-4 transform hover:scale-125 duration-300 ease-in-out" href="https://www.arkmoon.com">
+              <a className="inline-block hover:text-underline text-center h-auto p-2 md:p-4 transform hover:scale-125 duration-300 ease-in-out" href="https://www.arkmoon.com">
                 <img className="h-16 w-auto" src={ArkmoonLogo} alt="Delegate Arkmoon logo" />
               </a>
             </div>
@@ -88,23 +108,28 @@ export default function App() {
         </div>
       </div>
 
-      <section className="pt-8 md:pt-0 relative" style={{backgroundColor: '#1d0d23'}}>
+      <section className="pt-20 relative" style={{backgroundColor: '#1d0d23'}}>
         <div className="container px-3 mx-auto flex flex-wrap flex-col md:flex-row items-center text-white">
-          <div className="flex flex-col w-full md:w-2/5 justify-center items-start text-center md:text-left">
+          <div className="flex flex-col w-full md:w-1/2 justify-center items-start text-center md:text-left">
             <h1 className="my-4 text-5xl font-bold leading-tight">
               ARK Income Estimator
             </h1>
             <p className="leading-normal text-2xl mb-8">
               Figuring out how much you owe in crypto taxes is tedious. Let us help by calculating how much income you&rsquo;ve earned from ARK staking rewards.
             </p>
-            <button className="mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
+            <a
+              href="#address-form"
+              className="mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out"
+              onClick={handleGetStarted('address-form')}
+            >
               Get Started
-            </button>
+            </a>
           </div>
-          <div className="w-full md:w-3/5 justify-center max-h-screen">
+          <div className="w-full md:w-1/2 justify-center max-h-screen">
             <img className="w-auto max-h-screen mx-auto" src={AstroMan} />
           </div>
         </div>
+        <img className="absolute bottom-0 w-full h-auto" src={HillsImg} alt="hills" />
       </section>
 
       <FormProvider {...methods}>
@@ -122,7 +147,7 @@ export default function App() {
       {
         results
           ? (
-            <section className="bg-white w-full">
+            <section className="bg-white w-full" id="results-tables">
               <div className="container mx-auto">
                 <Report results={results} />
               </div>
