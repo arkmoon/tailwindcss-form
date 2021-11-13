@@ -1,6 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { useFormContext } from 'react-hook-form';
+import HouseIcon from '../../img/icon-house.svg';
+import CrossIcon from '../../img/icon-cross.svg';
+import FlagIcon from '../../img/icon-flag.svg';
 import FieldArray from './FieldArray';
 
 function Form({
@@ -28,9 +31,7 @@ function Form({
                   <div className="h-full w-1 bg-gray-200 pointer-events-none" />
                 </div>
                 <div className="flex-shrink-0 w-10 h-10 rounded-full bg-indigo-500 inline-flex items-center justify-center text-white relative z-10">
-                  <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} className="w-5 h-5" viewBox="0 0 24 24">
-                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-                  </svg>
+                  <img className="w-5 h-5" src={HouseIcon} alt="house icon" aria-hidden="true" />
                 </div>
                 <div className="flex-grow pl-4">
                   <h2 className="font-medium title-font text-sm text-gray-900 mb-1 tracking-wider">STEP 1</h2>
@@ -47,9 +48,7 @@ function Form({
                   <div className="h-full w-1 bg-gray-200 pointer-events-none" />
                 </div>
                 <div className="flex-shrink-0 w-10 h-10 rounded-full bg-indigo-500 inline-flex items-center justify-center text-white relative z-10">
-                  <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} className="w-5 h-5" viewBox="0 0 24 24">
-                    <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
-                  </svg>
+                  <img className="w-5 h-5" src={CrossIcon} alt="cross icon" aria-hidden="true" />
                 </div>
                 <div className="flex-grow pl-4">
                   <h2 className="font-medium title-font text-sm text-gray-900 mb-1 tracking-wider">STEP 2</h2>
@@ -66,10 +65,7 @@ function Form({
                   <div className="h-full w-1 bg-gray-200 pointer-events-none" />
                 </div>
                 <div className="flex-shrink-0 w-10 h-10 rounded-full bg-indigo-500 inline-flex items-center justify-center text-white relative z-10">
-                  <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} className="w-5 h-5" viewBox="0 0 24 24">
-                    <circle cx={12} cy={5} r={3} />
-                    <path d="M12 22V8M5 12H2a10 10 0 0020 0h-3" />
-                  </svg>
+                  <img className="w-5 h-5" src={FlagIcon} alt="flag icon" aria-hidden="true" />
                 </div>
                 <div className="flex-grow pl-4">
                   <h2 className="font-medium title-font text-sm text-gray-900 mb-1 tracking-wider">FINISH</h2>
