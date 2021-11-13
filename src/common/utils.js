@@ -27,6 +27,19 @@ function columnLabels(key) {
   }[key];
 }
 
+function scrollTo(hash) {
+  const el = document.getElementById(hash);
+  let y;
+
+  if (el) {
+    y = el.getBoundingClientRect().top + window.pageYOffset - 100;
+    window.scrollTo({top: y, behavior: 'smooth'});
+
+    document.getElementById(hash).focus({preventScroll: true});
+  }
+}
+
 export {
   columnLabels,
+  scrollTo,
 };

@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 import { useForm, FormProvider } from 'react-hook-form';
 import FeatherLogo from './img/feather.png';
 import ArkmoonLogo from './img/arkmoon.png';
@@ -9,6 +10,7 @@ import ArkLogo from './img/ark-logo.png';
 import Form from './components/form/Form';
 import Report from './components/report/Report';
 import Alert from './components/alert/Alert';
+import { scrollTo } from './common/utils';
 
 export default function App() {
   function handleOnSubmit(data) {
@@ -62,12 +64,25 @@ export default function App() {
     });
   }
 
+  function handleGetStarted(hash) {
+    return function(e) {
+      e && e?.preventDefault();
+
+      navigate(`#${hash}`);
+
+      scrollTo(hash);
+    };
+  }
+
   // Local state for results.
   const [results, setResults] = React.useState();
   const [isLoading, setIsLoading] = React.useState(false);
   const [error, setError] = React.useState();
 
   const methods = useForm();
+
+  // React Router.
+  let navigate = useNavigate();
 
   return (
     <div>
@@ -99,9 +114,13 @@ export default function App() {
             <p className="leading-normal text-2xl mb-8">
               Figuring out how much you owe in crypto taxes is tedious. Let us help by calculating how much income you&rsquo;ve earned from ARK staking rewards.
             </p>
-            <button className="mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
+            <a
+              href="#address-form"
+              className="mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out"
+              onClick={handleGetStarted('address-form')}
+            >
               Get Started
-            </button>
+            </a>
           </div>
           <div className="w-full md:w-1/2 justify-center max-h-screen">
             <img className="w-auto max-h-screen mx-auto" src={AstroMan} />

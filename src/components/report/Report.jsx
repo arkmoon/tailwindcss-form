@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import DatatablePage from './DatatablePage';
 import { fileOutput } from './FileOutput';
 import Alert from '../alert/Alert';
-import { columnLabels } from '../../constants/constants';
+import { columnLabels } from '../../common/utils';
 
 function Report({
   results = {},

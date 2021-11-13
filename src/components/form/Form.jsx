@@ -16,7 +16,9 @@ function Form({
   return (
     <section className="text-gray-800 body-font">
       <form
+        id="address-form"
         onSubmit={handleSubmit((data) => handleOnSubmit(data))}
+        tabIndex="-1"
       >
         <div className="container px-5 py-16 md:py-4 mx-auto flex flex-wrap">
           <div className="flex flex-wrap w-full">
