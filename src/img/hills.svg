@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   viewBox="0 0 1440.734 103.92"
+   version="1.1"
+   xmlnsXlink="http://www.w3.org/1999/xlink"
+   id="svg22"
+   sodipodi:docname="hills.svg"
+   inkscape:version="1.1 (c4e8f9e, 2021-05-24)"
+   width="1440.734"
+   height="103.92"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"><defs
+   id="defs26" />
+<sodipodi:namedview
+   id="namedview24"
+   pagecolor="#ffffff"
+   bordercolor="#666666"
+   borderopacity="1.0"
+   inkscape:pageshadow="2"
+   inkscape:pageopacity="0.0"
+   inkscape:pagecheckerboard="0"
+   showgrid="false"
+   inkscape:zoom="0.52952633"
+   inkscape:cx="693.07225"
+   inkscape:cy="226.61763"
+   inkscape:window-width="1680"
+   inkscape:window-height="950"
+   inkscape:window-x="0"
+   inkscape:window-y="22"
+   inkscape:window-maximized="1"
+   inkscape:current-layer="svg22"
+   fit-margin-top="0"
+   fit-margin-left="0"
+   fit-margin-right="0"
+   fit-margin-bottom="0" />
+<g
+   stroke="none"
+   id="g9"
+   transform="translate(0,-0.432)" />
+{1} fill=&quot;none&quot; fillRule=&quot;evenodd&quot;&gt;
+    <g
+   fill="#ffffff"
+   fillRule="nonzero"
+   id="g16"
+   transform="matrix(-1.1276471,0,0,1,1619.2097,-20.432)">
+  <path
+     d="m 0,0 c 90.72834,0.92752791 147.91275,27.187927 291.91018,59.9119 95.99828,21.815983 270.11668,48.30769 485.51161,41.70551 C 487.75786,175.13915 216.33606,153.6679 0,74.97325"
+     opacity="0.1"
+     id="path11"
+     sodipodi:nodetypes="cscc" />
+  <path
+     d="M 100,104.7085 C 277.41333,72.234595 426.14788,52.524666 546.20363,45.57871 666.25939,38.632755 810.52485,41.797907 979,55.074167 931.06997,56.122511 828.72506,105.0612 625.07344,126.35102 429.63592,146.78214 250.86324,145.46261 100,104.7085 Z"
+     opacity="0.1"
+     id="path13"
+     sodipodi:nodetypes="cscsc" />
+  <path
+     d="m 1046,51.652128 c 84.8305,-22.323316 233.0832,-34.044245 393,-11.486447 V 120 C 1271.1721,77.943531 1140.1721,55.160907 1046,51.652128 Z"
+     id="Path-4"
+     opacity="0.2" />
+</g>
+<g
+   fill="#ffffff"
+   fillRule="nonzero"
+   id="g20"
+   transform="matrix(-1.064228,0,0,1.0045693,1478.99,14.199024)">
+  <path
+     d="m 0.457,34.035 c 56.629,19.163 97.751,31.774 123.365,37.83 57.632,13.63 110.473,18.425 148.211,21.594 39.322,3.3 124.602,2.342 188.992,-1.796 25.735,-1.653 57.702,-5.291 95.901,-10.911 57.63286,-7.446398 113.98872,-21.838903 170.679,-34.624 176.66989,-50.4508091 335.4199,-52.8242444 507.795,-23.824 50.455,8.444 118.951,25.128 205.486,50.05 l 0.305,31.998 -1440.07,-0.321 z"
+     id="path18"
+     sodipodi:nodetypes="ccccccccccc" />
+</g>
+</svg>

@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useForm, FormProvider } from 'react-hook-form';
 import FeatherLogo from './img/feather.png';
 import ArkmoonLogo from './img/arkmoon.png';
+import HillsImg from './img/hills.svg';
 import AstroMan from './img/astroman.jpg';
 import ArkLogo from './img/ark-logo.png';
 import Form from './components/form/Form';
@@ -70,17 +71,18 @@ export default function App() {
 
   return (
     <div>
-      <div className="w-full bg-black">
+      <div id="top-menu" className="-top-full shadow-md w-full fixed transition-all duration-500 z-50" style={{ backgroundColor: '#1d0d23'}}>
         <div className="container mx-auto h-20 md:h-24">
           <div className="w-full flex items-center justify-between">
-            <a className="inline-block hover:text-underline text-center h-10 p-2 md:h-auto md:p-4" href="/">
+            <a className="flex items-center justify-between hover:text-underline text-center h-auto p-2 md:p-4" href="/">
               <img className="h-16 w-auto" src={ArkLogo} alt="ARK Ecosystem logo" />
+              <h1 className="text-white text-xl ml-4" id="nav-title">ARK Income Estimator</h1>
             </a>
             <div className="flex w-1/2 justify-end content-center">
-              <a className="inline-block hover:text-underline text-center h-10 p-2 md:h-auto md:p-4 transform hover:scale-125 duration-300 ease-in-out" href="https://arkdelegates.live/delegate/goose/contributions">
+              <a className="inline-block hover:text-underline text-center h-auto p-2 md:p-4 transform hover:scale-125 duration-300 ease-in-out" href="https://arkdelegates.live/delegate/goose/contributions">
                 <img className="h-16 w-auto" src={FeatherLogo} alt="Delegate Goose logo" />
               </a>
-              <a className="inline-block hover:text-underline text-center h-10 p-2 md:h-auto md:p-4 transform hover:scale-125 duration-300 ease-in-out" href="https://www.arkmoon.com">
+              <a className="inline-block hover:text-underline text-center h-auto p-2 md:p-4 transform hover:scale-125 duration-300 ease-in-out" href="https://www.arkmoon.com">
                 <img className="h-16 w-auto" src={ArkmoonLogo} alt="Delegate Arkmoon logo" />
               </a>
             </div>
@@ -88,9 +90,9 @@ export default function App() {
         </div>
       </div>
 
-      <section className="pt-8 md:pt-0 relative" style={{backgroundColor: '#1d0d23'}}>
+      <section className="pt-20 relative" style={{backgroundColor: '#1d0d23'}}>
         <div className="container px-3 mx-auto flex flex-wrap flex-col md:flex-row items-center text-white">
-          <div className="flex flex-col w-full md:w-2/5 justify-center items-start text-center md:text-left">
+          <div className="flex flex-col w-full md:w-1/2 justify-center items-start text-center md:text-left">
             <h1 className="my-4 text-5xl font-bold leading-tight">
               ARK Income Estimator
             </h1>
@@ -101,10 +103,11 @@ export default function App() {
               Get Started
             </button>
           </div>
-          <div className="w-full md:w-3/5 justify-center max-h-screen">
+          <div className="w-full md:w-1/2 justify-center max-h-screen">
             <img className="w-auto max-h-screen mx-auto" src={AstroMan} />
           </div>
         </div>
+        <img className="absolute bottom-0 w-full h-auto" src={HillsImg} alt="hills" />
       </section>
 
       <FormProvider {...methods}>

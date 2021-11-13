@@ -18,7 +18,7 @@ function Form({
       <form
         onSubmit={handleSubmit((data) => handleOnSubmit(data))}
       >
-        <div className="container px-5 py-24 mx-auto flex flex-wrap">
+        <div className="container px-5 py-16 md:py-4 mx-auto flex flex-wrap">
           <div className="flex flex-wrap w-full">
             <div className="lg:w-2/5 md:w-1/2 md:pr-10 md:py-6">
               <div className="flex relative pb-12">
