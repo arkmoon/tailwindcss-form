@@ -1,9 +1,8 @@
 import React from 'react';
 import axios from 'axios';
 import { useForm, FormProvider } from 'react-hook-form';
-import FeatherLogo from './img/feather.png';
-import ArkmoonLogo from './img/arkmoon.png';
-import ArkLogo from './img/ark-logo.png';
+import GooseLogo from './img/goose-logo.png';
+import ArkmoonLogo from './img/arkmoon-logo.png';
 import HillsImg from './img/hills.svg';
 import AstroMan from './img/astroman.jpg';
 import Form from './components/form/Form';
@@ -72,8 +71,6 @@ export default function App() {
   function handleGetStarted(hash) {
     return function(e) {
       e && e?.preventDefault();
-
-
       scrollTo(hash);
     };
   }
@@ -86,6 +83,18 @@ export default function App() {
   const methods = useForm();
 
   // React Router.
+  const navImageClasses = `
+    duration-300
+    ease-in-out
+    h-auto
+    hover:scale-125
+    hover:text-underline
+    inline-block
+    md:p-4
+    p-2
+    text-center
+    transform
+  `;
 
   return (
     <div>
@@ -93,14 +102,29 @@ export default function App() {
         <div className="mx-auto h-20 md:h-24">
           <div className="w-full flex items-center justify-between">
             <div className="flex w-full justify-end content-center">
-              <a className="inline-block hover:text-underline text-center h-auto p-2 md:p-4 transform hover:scale-125 duration-300 ease-in-out" href="https://www.ark.io">
-                <img className="h-16 w-auto" src={ArkLogo} alt="Delegate Arkmoon logo" />
+              <a
+                className={navImageClasses}
+                target="_blank"
+                rel="noreferrer"
+                href="https://arkdelegates.live/delegate/goose/contributions"
+              >
+                <img
+                  className="h-16 w-auto"
+                  src={GooseLogo}
+                  alt="Delegate Goose logo"
+                />
               </a>
-              <a className="inline-block hover:text-underline text-center h-auto p-2 md:p-4 transform hover:scale-125 duration-300 ease-in-out" href="https://arkdelegates.live/delegate/goose/contributions">
-                <img className="h-16 w-auto" src={FeatherLogo} alt="Delegate Goose logo" />
-              </a>
-              <a className="inline-block hover:text-underline text-center h-auto p-2 md:p-4 transform hover:scale-125 duration-300 ease-in-out" href="https://www.arkmoon.com">
-                <img className="h-16 w-auto" src={ArkmoonLogo} alt="Delegate Arkmoon logo" />
+              <a
+                className={navImageClasses}
+                target="_blank"
+                rel="noreferrer"
+                href="https://www.arkmoon.com"
+              >
+                <img
+                  className="h-16 w-auto"
+                  src={ArkmoonLogo}
+                  alt="Delegate Arkmoon logo"
+                />
               </a>
             </div>
           </div>
