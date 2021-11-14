@@ -27,12 +27,6 @@ function FieldArray({
     name: id,
   });
 
-  React.useEffect(() => {
-    if (fields.length === 0) {
-      append({ value: '' });
-    }
-  });
-
   return (
     <>
       <div className="flex flex-col mb-4">
@@ -88,7 +82,7 @@ function FieldArray({
           append({ value: '' });
           clearErrors(id);
         }}>
-        + Add another {displayName}
+        + Add {displayName}
       </button>
       <div className="clear-right" />
     </>

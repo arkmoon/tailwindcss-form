@@ -1,11 +1,10 @@
 import React from 'react';
 import axios from 'axios';
 import { useForm, FormProvider } from 'react-hook-form';
-import FeatherLogo from './img/feather.png';
-import ArkmoonLogo from './img/arkmoon.png';
+import GooseLogo from './img/goose-logo.png';
+import ArkmoonLogo from './img/arkmoon-logo.png';
 import HillsImg from './img/hills.svg';
 import AstroMan from './img/astroman.jpg';
-import ArkLogo from './img/ark-logo.png';
 import Form from './components/form/Form';
 import Report from './components/report/Report';
 import Alert from './components/alert/Alert';
@@ -72,8 +71,6 @@ export default function App() {
   function handleGetStarted(hash) {
     return function(e) {
       e && e?.preventDefault();
-
-
       scrollTo(hash);
     };
   }
@@ -86,22 +83,48 @@ export default function App() {
   const methods = useForm();
 
   // React Router.
+  const navImageClasses = `
+    duration-300
+    ease-in-out
+    h-auto
+    hover:scale-125
+    hover:text-underline
+    inline-block
+    md:p-4
+    p-2
+    text-center
+    transform
+  `;
 
   return (
     <div>
-      <div id="top-menu" className="-top-full shadow-md w-full fixed transition-all duration-500 z-50" style={{ backgroundColor: '#1d0d23'}}>
-        <div className="container mx-auto h-20 md:h-24">
+      <div className="w-full fixed z-50">
+        <div className="mx-auto h-20 md:h-24">
           <div className="w-full flex items-center justify-between">
-            <a className="flex items-center justify-between hover:text-underline text-center h-auto p-2 md:p-4" href="https://ark.io">
-              <img className="h-16 w-auto" src={ArkLogo} alt="ARK Ecosystem logo" />
-              <h1 className="text-white text-xl ml-4" id="nav-title">ARK Income Estimator</h1>
-            </a>
-            <div className="flex w-1/2 justify-end content-center">
-              <a className="inline-block hover:text-underline text-center h-auto p-2 md:p-4 transform hover:scale-125 duration-300 ease-in-out" href="https://arkdelegates.live/delegate/goose/contributions">
-                <img className="h-16 w-auto" src={FeatherLogo} alt="Delegate Goose logo" />
+            <div className="flex w-full justify-end content-center">
+              <a
+                className={navImageClasses}
+                target="_blank"
+                rel="noreferrer"
+                href="https://arkdelegates.live/delegate/goose/contributions"
+              >
+                <img
+                  className="h-16 w-auto"
+                  src={GooseLogo}
+                  alt="Delegate Goose logo"
+                />
               </a>
-              <a className="inline-block hover:text-underline text-center h-auto p-2 md:p-4 transform hover:scale-125 duration-300 ease-in-out" href="https://www.arkmoon.com">
-                <img className="h-16 w-auto" src={ArkmoonLogo} alt="Delegate Arkmoon logo" />
+              <a
+                className={navImageClasses}
+                target="_blank"
+                rel="noreferrer"
+                href="https://www.arkmoon.com"
+              >
+                <img
+                  className="h-16 w-auto"
+                  src={ArkmoonLogo}
+                  alt="Delegate Arkmoon logo"
+                />
               </a>
             </div>
           </div>

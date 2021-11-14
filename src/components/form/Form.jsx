@@ -30,7 +30,7 @@ function Form({
                 <div className="h-full w-10 absolute inset-0 flex items-center justify-center">
                   <div className="h-full w-1 bg-gray-200 pointer-events-none" />
                 </div>
-                <div className="flex-shrink-0 w-10 h-10 rounded-full bg-indigo-500 inline-flex items-center justify-center text-white relative z-10">
+                <div className="flex-shrink-0 w-10 h-10 rounded-full inline-flex items-center justify-center text-white relative z-10" style={{backgroundColor: '#1d0d23'}}>
                   <img className="w-5 h-5" src={HouseIcon} alt="house icon" aria-hidden="true" />
                 </div>
                 <div className="flex-grow pl-4">
@@ -47,7 +47,7 @@ function Form({
                 <div className="h-full w-10 absolute inset-0 flex items-center justify-center">
                   <div className="h-full w-1 bg-gray-200 pointer-events-none" />
                 </div>
-                <div className="flex-shrink-0 w-10 h-10 rounded-full bg-indigo-500 inline-flex items-center justify-center text-white relative z-10">
+                <div className="flex-shrink-0 w-10 h-10 rounded-full inline-flex items-center justify-center text-white relative z-10" style={{backgroundColor: '#1d0d23'}}>
                   <img className="w-5 h-5" src={CrossIcon} alt="cross icon" aria-hidden="true" />
                 </div>
                 <div className="flex-grow pl-4">
@@ -64,7 +64,7 @@ function Form({
                 <div className="h-full w-10 absolute inset-0 flex items-center justify-center">
                   <div className="h-full w-1 bg-gray-200 pointer-events-none" />
                 </div>
-                <div className="flex-shrink-0 w-10 h-10 rounded-full bg-indigo-500 inline-flex items-center justify-center text-white relative z-10">
+                <div className="flex-shrink-0 w-10 h-10 rounded-full inline-flex items-center justify-center text-white relative z-10" style={{backgroundColor: '#1d0d23'}}>
                   <img className="w-5 h-5" src={FlagIcon} alt="flag icon" aria-hidden="true" />
                 </div>
                 <div className="flex-grow pl-4">
