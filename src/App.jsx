@@ -1,73 +1,13 @@
 import React from 'react';
-import axios from 'axios';
-import { useForm, FormProvider } from 'react-hook-form';
-import GooseLogo from './img/goose-logo.png';
-import ArkmoonLogo from './img/arkmoon-logo.png';
+import GooseLogo from './img/goose-logo.svg';
+import ArkmoonLogo from './img/arkmoon-logo.svg';
 import HillsImg from './img/hills.svg';
 import AstroMan from './img/astroman.jpg';
 import Form from './components/form/Form';
-import Report from './components/report/Report';
-import Alert from './components/alert/Alert';
 import { scrollTo } from './common/utils';
+import NavIcon from './components/nav/NavIcon';
 
 export default function App() {
-  function handleOnSubmit(data) {
-
-    const addresses = (data?.addresses && data?.addresses?.length) ? data?.addresses?.filter(({value}) => value).map(({value}) => value) : [];
-    const exceptions = (data?.exceptions && data?.exceptions?.length) ? data?.exceptions?.filter(({value}) => value).map(({value}) => value) : [];
-
-    // Environment Variables.
-    const network = import.meta.env.VITE_NETWORK;
-    const submissionUrl = import.meta.env.VITE_SUBMIT_URL;
-
-    // Ensure they have at least 1 address.
-    if (addresses.length) {
-      // Start loading.
-      setIsLoading(true);
-
-      axios.post(`${submissionUrl}`, {
-        addresses,
-        exceptions,
-        network,
-      }).then((response) => {
-        if (
-          response?.status === 200
-          && response?.data
-          && !response?.data?.Error
-        ) {
-          // Clear the error if any.
-          setError(null);
-
-          // Stop loading.
-          setIsLoading(false);
-
-          // Display the results.
-          setResults(response?.data);
-
-          // Scroll to results.
-          scrollTo('results-tables');
-        } else {
-          setError(
-            <Alert />
-          );
-          setResults(null);
-
-          // Scroll to error.
-          scrollTo('results-error');
-        }
-      }).catch((e) => {
-        console.error(e);
-        setError(
-          <Alert />
-        );
-        setResults(null);
-
-        // Scroll to error.
-        scrollTo('results-error');
-      });
-    }
-  }
-
   function handleGetStarted(hash) {
     return function(e) {
       e && e?.preventDefault();
@@ -75,57 +15,22 @@ export default function App() {
     };
   }
 
-  // Local state for results.
-  const [results, setResults] = React.useState();
-  const [isLoading, setIsLoading] = React.useState(false);
-  const [error, setError] = React.useState();
-
-  const methods = useForm();
-
-  // React Router.
-  const navImageClasses = `
-    duration-300
-    ease-in-out
-    h-auto
-    hover:scale-125
-    hover:text-underline
-    inline-block
-    md:p-4
-    p-2
-    text-center
-    transform
-  `;
-
   return (
-    <div>
-      <div className="w-full fixed z-50">
-        <div className="mx-auto h-20 md:h-24">
+    <>
+      <div className="w-full fixed bottom-4 z-50">
+        <div className="mx-auto h-16 md:h-20">
           <div className="w-full flex items-center justify-between">
             <div className="flex w-full justify-end content-center">
-              <a
-                className={navImageClasses}
-                target="_blank"
-                rel="noreferrer"
-                href="https://arkdelegates.live/delegate/goose/contributions"
-              >
-                <img
-                  className="h-16 w-auto"
-                  src={GooseLogo}
-                  alt="Delegate Goose logo"
-                />
-              </a>
-              <a
-                className={navImageClasses}
-                target="_blank"
-                rel="noreferrer"
-                href="https://www.arkmoon.com"
-              >
-                <img
-                  className="h-16 w-auto"
-                  src={ArkmoonLogo}
-                  alt="Delegate Arkmoon logo"
-                />
-              </a>
+              <NavIcon
+                altText="Delegate Goose logo"
+                logo={GooseLogo}
+                url="https://arkdelegates.live/delegate/goose/contributions"
+              />
+              <NavIcon
+                altText="Delegate arkmoon logo"
+                logo={ArkmoonLogo}
+                url="https://www.arkmoon.com"
+              />
             </div>
           </div>
         </div>
@@ -142,7 +47,7 @@ export default function App() {
             </p>
             <a
               href="#address-form"
-              className="mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out"
+              className="mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out z-50"
               onClick={handleGetStarted('address-form')}
             >
               Get Started
@@ -155,34 +60,12 @@ export default function App() {
         <img className="absolute bottom-0 w-full h-auto" src={HillsImg} alt="hills" />
       </section>
 
-      <FormProvider {...methods}>
-        <Form handleOnSubmit={handleOnSubmit} />
-      </FormProvider>
-
-      {
-        isLoading
-      }
-
-      {
-        error
-      }
-
-      {
-        results
-          ? (
-            <section className="bg-white w-full" id="results-tables">
-              <div className="container mx-auto">
-                <Report results={results} />
-              </div>
-            </section>
-          )
-          : null
-      }
+      <Form />
 
       <footer className="text-center py-12">
         <p><sup>*</sup>This software does not constitute formal tax advice. For educational purposes only.</p>
         <p>&copy; 2021 Delegate Goose and Delegate ArkMoon</p>
       </footer>
-    </div>
+    </>
   );
 }

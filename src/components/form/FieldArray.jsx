@@ -27,64 +27,127 @@ function FieldArray({
     name: id,
   });
 
+  function handleNewFieldChange(e) {
+    setInputField(e?.target?.value || '');
+  }
+
+  function addNew() {
+    if (inputField) {
+      append({ value: inputField });
+      clearErrors(id);
+      setInputField('');
+      addNewRef.current.focus();
+    }
+  }
+
+  function removeField(index) {
+    return function() {
+      if (fields.length > 1) {
+        remove(index);
+        if (isRequired) {
+          clearErrors(id);
+        }
+      } else {
+        if (isRequired) {
+          setError(id, { type: 'required', message: `At least one ${displayName} is required.`});
+        }
+        remove(index);
+        append({ value: '' });
+      }
+    };
+  }
+
+  // Local State.
+  const [inputField, setInputField] = React.useState('');
+
+  const addNewRef = React.createRef();
+
   return (
     <>
       <div className="flex flex-col mb-4">
-        {
-          fields.map((item, index) => (
-            <Controller
-              key={item.id}
-              name={`${id}.${index}.value`}
-              control={control}
-              defaultValue={item.value}
-              render={({ field }) => (
-                <>
-                  <label className="mt-8 mb-2 font-bold text-lg" htmlFor={`${displayName}_${index}`}>{displayName} #{index + 1}</label>
+        <div className="flex items-center border-b border-blue-500 py-2">
+          <input
+            aria-label={`Add a ${displayName}`}
+            className="
+              appearance-none
+              bg-transparent
+              border-none
+              w-full
+            text-gray-700
+              mr-3
+              py-1
+              px-2
+              leading-tight
+              focus:outline-none"
+            key={`Add a ${displayName}`}
+            onChange={handleNewFieldChange}
+            ref={addNewRef}
+            type="text"
+            value={inputField}
+          />
 
-                  <div className="flex">
-                    <input
-                      className="border rounded-lg py-2 px-3 w-4/5"
-                      id={`${displayName}_${index}`}
-                      maxLength="100"
-                      name={`${displayName}_${index}`}
-                      type="text"
-                      {...field}
-                    />
-                    <button
-                      className="w-1/5"
-                      onClick={() => {
-                        if (fields.length > 1) {
-                          remove(index);
-                          if (isRequired) {
-                            clearErrors(id);
-                          }
-                        } else {
-                          if (isRequired) {
-                            setError(id, { type: 'required', message: `At least one ${displayName} is required.`});
-                          }
-                          remove(index);
-                          append({ value: '' });
-                        }
-                      }}
-                    >Delete</button>
-                  </div>
-                  {errors[id] && <p>{errors[id].message}</p>}
-                </>
-              )}>
-            </Controller>
-          ))
+          <button
+            className="flex-shrink-0 text-sm bg-yellow-300 text-purple-dark shadow py-1 px-2 rounded font-bold"
+            type="button"
+            onClick={addNew}>
+              + Add<span className="sr-only"> {displayName}</span>
+          </button>
+        </div>
+
+        {
+          (fields && fields?.length)
+            ? (
+              fields.map((item, index) => (
+                <Controller
+                  key={item.id}
+                  name={`${id}.${index}.value`}
+                  control={control}
+                  defaultValue={item.value}
+                  render={({ field }) => (
+                    <>
+                      <div className="flex items-center py-2">
+                        <input
+                          aria-label={`${displayName} #${index + 1}`}
+                          aria-describedby={`${displayName}-error-${index}`}
+                          className="
+                            appearance-none
+                            bg-transparent
+                            border-none
+                            w-full
+                          text-gray-700
+                            mr-3
+                            py-1
+                            px-2
+                            leading-tight
+                            focus:outline-none"
+                          key={`${id}.${index}.value`}
+                          type="text"
+                          {...field}
+                        />
+                        <button
+                          className="flex-shrink-0 text-sm bg-white text-purple-dark py-1 px-2 font-bold"
+                          disabled={fields?.length < 2}
+                          type="button"
+                          onClick={removeField(index)}
+                        >
+                          - Delete<span className="sr-only"> {displayName}</span>
+                        </button>
+                      </div>
+                      {
+                        (errors[id])
+                          ? (
+                            <p className="text-red-800" id={`${displayName}-error-${index}`}>Error: {errors[id].message}</p>
+                          )
+                          : null
+                      }
+                    </>
+                  )}>
+                </Controller>
+              ))
+            )
+            : null
         }
       </div>
-      <button
-        className="float-right pr-5"
-        type="button"
-        onClick={() => {
-          append({ value: '' });
-          clearErrors(id);
-        }}>
-        + Add {displayName}
-      </button>
-      <div className="clear-right" />
     </>
   );
 }

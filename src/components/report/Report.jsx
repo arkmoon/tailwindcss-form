@@ -4,10 +4,9 @@ import DatatablePage from './DatatablePage';
 import { fileOutput } from './FileOutput';
 import Alert from '../alert/Alert';
 import { columnLabels } from '../../common/utils';
+import { useLocation } from 'react-router';
 
-function Report({
-  results = {},
-}) {
+function Report() {
   function dataTable(title, data) {
     const columns = (data?.columns && data?.columns?.length)
       ? (
@@ -52,9 +51,18 @@ function Report({
     );
   }
 
+  // React Router.
+  let location = useLocation();
+  let results = location.state?.results || {};
+
   let tables = [];
 
-  const keys = Object.keys(results);
+  const keys = [
+    'Summary',
+    'Buys',
+    'Sells',
+    '8949'  ,
+  ];
 
   for (const key of keys) {
     tables.push(dataTable(key, results[key]));
@@ -67,12 +75,12 @@ function Report({
 
   return (
     <>
-      <div className="p-4">
+      <div className="container mx-auto">
         <h2 className="text-3xl">
-            Results
+            Report
         </h2>
       </div>
-      <div className="px-3 py-4">
+      <div className="container mx-auto">
         {
           (tables.length > 0)
             ? (
