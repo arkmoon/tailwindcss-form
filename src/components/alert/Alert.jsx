@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 function Alert({
-  message = 'Your search resulted in zero results.',
+  message = 'Your search came back with zero results.',
   style = 'danger',
   title = 'No data found',
 }) {

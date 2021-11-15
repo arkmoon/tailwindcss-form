@@ -40,7 +40,7 @@ function DatatablePage(columns, rows) {
               <tbody className="bg-white divide-y divide-gray-200">
                 {
                   rows?.map((row, i) => (
-                    <tr className={(i % 2 === 0) ? 'bg-gray-50' : ''}key={`row-${i}`}>
+                    <tr className={(i % 2 !== 0) ? 'bg-gray-50' : ''}key={`row-${i}`}>
                       {
                         // Output the row in the same order that the columns were declared.
                         columns?.map((column) => (
