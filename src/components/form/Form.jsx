@@ -81,8 +81,17 @@ function Form() {
   // React Hook Forms.
   const methods = useForm();
 
+  // Ref for loader.
+  const loadingRef = React.createRef();
+
   // React Router.
   let navigate = useNavigate();
+
+  React.useEffect(() => {
+    if (loadingRef && loadingRef.current) {
+      loadingRef.current.focus();
+    }
+  }, [isLoading]);
 
   return (
     <section className="text-gray-800 w-full lg:w-3/5 mx-auto">
@@ -91,11 +100,6 @@ function Form() {
         onSubmit={methods.handleSubmit(handleOnSubmit)}
         tabIndex="-1"
       >
-
-        {
-          isLoading
-        }
-
         {
           error
         }
@@ -112,59 +116,73 @@ function Form() {
             : null
         }
 
-
         <FormProvider {...methods}>
-          <div className="container px-5 py-16 md:py-4 w-full mx-auto">
-            <div className="flex flex-wrap">
-              <div className="md:pr-10 md:py-6 w-full">
-                <div className="flex relative pb-12">
-                  <div className="h-full w-10 absolute inset-0 flex items-center justify-center">
-                    <div className="h-full w-1 bg-gray-200 pointer-events-none" />
-                  </div>
-                  <div className="flex-shrink-0 w-10 h-10 rounded-full inline-flex items-center justify-center text-white relative z-10 bg-purple">
-                    <img className="w-5 h-5" src={HouseIcon} alt="house icon" aria-hidden="true" />
-                  </div>
-                  <div className="flex-grow pl-4">
-                    <h2 className="font-medium title-font text-sm text-gray-900 mb-1 tracking-wider">STEP 1</h2>
-                    <p className="leading-relaxed">Add your ARK addresses.</p>
-                    <FieldArray
-                      displayName="ARK Address"
-                      id="addresses"
-                    />
+
+          {
+            (isLoading)
+              ? (
+                <div ref={loadingRef} tabIndex="-1">
+                  <div className="fixed top-0 left-0 right-0 bottom-0 w-full h-screen z-50 overflow-hidden bg-black opacity-90 flex flex-col items-center justify-center">
+                    <div className="loader ease-linear rounded-full border-4 border-t-4 border-gray-200 h-12 w-12 mb-4" />
+                    <h2 className="text-center text-white text-xl font-semibold">Loading...</h2>
+                    <p className="w-1/3 text-center text-white">This may take a few seconds, please don&apos;t close this page.</p>
                   </div>
                 </div>
-                <div className="flex relative pb-12">
-                  <div className="h-full w-10 absolute inset-0 flex items-center justify-center">
-                    <div className="h-full w-1 bg-gray-200 pointer-events-none" />
-                  </div>
-                  <div className="flex-shrink-0 w-10 h-10 rounded-full inline-flex items-center justify-center text-white relative z-10 bg-purple">
-                    <img className="w-5 h-5" src={CrossIcon} alt="cross icon" aria-hidden="true" />
-                  </div>
-                  <div className="flex-grow pl-4">
-                    <h2 className="font-medium title-font text-sm text-gray-900 mb-1 tracking-wider">STEP 2</h2>
-                    <p className="leading-relaxed">Add any excluded transactions that you might not want to count as income.</p>
-                    <FieldArray
-                      displayName="Excluded Transaction"
-                      id="exceptions"
-                    />
+              )
+              : (
+                <div className="container px-5 py-16 md:py-4 w-full mx-auto">
+                  <div className="flex flex-wrap">
+                    <div className="md:pr-10 md:py-6 w-full">
+                      <div className="flex relative pb-12">
+                        <div className="h-full w-10 absolute inset-0 flex items-center justify-center">
+                          <div className="h-full w-1 bg-gray-200 pointer-events-none" />
+                        </div>
+                        <div className="flex-shrink-0 w-10 h-10 rounded-full inline-flex items-center justify-center text-white relative z-10 bg-purple">
+                          <img className="w-5 h-5" src={HouseIcon} alt="house icon" aria-hidden="true" />
+                        </div>
+                        <div className="flex-grow pl-4">
+                          <h2 className="font-medium title-font text-sm text-gray-900 mb-1 tracking-wider">STEP 1</h2>
+                          <p className="leading-relaxed">Add your ARK addresses.</p>
+                          <FieldArray
+                            displayName="ARK Address"
+                            id="addresses"
+                          />
+                        </div>
+                      </div>
+                      <div className="flex relative pb-12">
+                        <div className="h-full w-10 absolute inset-0 flex items-center justify-center">
+                          <div className="h-full w-1 bg-gray-200 pointer-events-none" />
+                        </div>
+                        <div className="flex-shrink-0 w-10 h-10 rounded-full inline-flex items-center justify-center text-white relative z-10 bg-purple">
+                          <img className="w-5 h-5" src={CrossIcon} alt="cross icon" aria-hidden="true" />
+                        </div>
+                        <div className="flex-grow pl-4">
+                          <h2 className="font-medium title-font text-sm text-gray-900 mb-1 tracking-wider">STEP 2</h2>
+                          <p className="leading-relaxed">Add any excluded transactions that you might not want to count as income.</p>
+                          <FieldArray
+                            displayName="Excluded Transaction"
+                            id="exceptions"
+                          />
+                        </div>
+                      </div>
+                      <div className="flex relative pb-12">
+                        <div className="h-full w-10 absolute inset-0 flex items-center justify-center">
+                          <div className="h-full w-1 bg-gray-200 pointer-events-none" />
+                        </div>
+                        <div className="flex-shrink-0 w-10 h-10 rounded-full inline-flex items-center justify-center text-white relative z-10 bg-purple">
+                          <img className="w-5 h-5" src={FlagIcon} alt="flag icon" aria-hidden="true" />
+                        </div>
+                        <div className="flex-grow pl-4">
+                          <h2 className="font-medium title-font text-sm text-gray-900 mb-1 tracking-wider">FINISH</h2>
+                          <p className="leading-relaxed">Submit your data and see how much income was made.</p>
+                          <button className="bg-yellow-300 text-purple-dark shadow font-bold uppercase text-lg mx-auto p-4 w-full mt-8" type="submit">Submit</button>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
-                <div className="flex relative pb-12">
-                  <div className="h-full w-10 absolute inset-0 flex items-center justify-center">
-                    <div className="h-full w-1 bg-gray-200 pointer-events-none" />
-                  </div>
-                  <div className="flex-shrink-0 w-10 h-10 rounded-full inline-flex items-center justify-center text-white relative z-10 bg-purple">
-                    <img className="w-5 h-5" src={FlagIcon} alt="flag icon" aria-hidden="true" />
-                  </div>
-                  <div className="flex-grow pl-4">
-                    <h2 className="font-medium title-font text-sm text-gray-900 mb-1 tracking-wider">FINISH</h2>
-                    <p className="leading-relaxed">Submit your data and see how much income was made.</p>
-                    <button className="bg-yellow-300 text-purple-dark shadow font-bold uppercase text-lg mx-auto p-4 w-full mt-8" type="submit">Submit</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+              )
+          }
         </FormProvider>
 
       </form>
