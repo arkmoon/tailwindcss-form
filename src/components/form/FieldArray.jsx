@@ -9,13 +9,11 @@ import {
 function FieldArray({
   displayName = '',
   id = '',
-  isRequired = false,
 }) {
   const {
     clearErrors,
     control,
     formState: { errors },
-    setError,
   } = useFormContext(); // retrieve all hook methods
 
   const {
@@ -42,18 +40,9 @@ function FieldArray({
 
   function removeField(index) {
     return function() {
-      if (fields.length > 1) {
-        remove(index);
-        if (isRequired) {
-          clearErrors(id);
-        }
-      } else {
-        if (isRequired) {
-          setError(id, { type: 'required', message: `At least one ${displayName} is required.`});
-        }
-        remove(index);
-        append({ value: '' });
-      }
+      remove(index);
+      clearErrors(id);
+      addNewRef.current.focus();
     };
   }
 
@@ -79,7 +68,9 @@ function FieldArray({
               px-2
               leading-tight
               focus:outline-none"
-            key={`Add a ${displayName}`}
+            key={id}
+            id={id}
+            name={id}
             onChange={handleNewFieldChange}
             ref={addNewRef}
             type="text"
@@ -126,7 +117,6 @@ function FieldArray({
                         />
                         <button
                           className="flex-shrink-0 text-sm bg-white text-purple-dark py-1 px-2 font-bold"
-                          disabled={fields?.length < 2}
                           type="button"
                           onClick={removeField(index)}
                         >
@@ -155,7 +145,6 @@ function FieldArray({
 FieldArray.propTypes = {
   displayName: PropTypes.string,
   id: PropTypes.string,
-  isRequired: PropTypes.bool,
 };
 
 export default FieldArray;
