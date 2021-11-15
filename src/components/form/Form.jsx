@@ -43,6 +43,9 @@ function Form() {
           // Go to the Results page.
           navigate('/report', { state: {results: response?.data || {} }});
 
+          // Scroll back up if they haven't.
+          window.scrollTo(0, 0);
+
           // // Display the results.
           // setResults(response?.data);
 
@@ -127,7 +130,6 @@ function Form() {
                     <FieldArray
                       displayName="ARK Address"
                       id="addresses"
-                      isRequired={false}
                     />
                   </div>
                 </div>
@@ -144,7 +146,6 @@ function Form() {
                     <FieldArray
                       displayName="Excluded Transaction"
                       id="exceptions"
-                      isRequired={false}
                     />
                   </div>
                 </div>

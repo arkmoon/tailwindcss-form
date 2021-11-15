@@ -17,9 +17,9 @@ export default function App() {
 
   return (
     <>
-      <div className="w-full fixed bottom-4 z-50">
+      <div className="fixed right-4 bottom-4">
         <div className="mx-auto h-16 md:h-20">
-          <div className="w-full flex items-center justify-between">
+          <div className="float-right flex items-center justify-between">
             <div className="flex w-full justify-end content-center">
               <NavIcon
                 altText="Delegate Goose logo"
