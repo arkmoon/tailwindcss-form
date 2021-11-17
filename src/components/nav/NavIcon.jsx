@@ -6,33 +6,32 @@ function NavIcon({
   logo = '',
   url = '',
 }) {
-
-  // Nav classes for icons.
-  const navImageClasses = `
-    duration-300
-    ease-in-out
-    flex
-    h-16
-    w-16
-    hover:scale-125
-    hover:text-underline
-    items-center
-    justify-center
-    m-2
-    md:h-20
-    md:w-20
-    p-2
-    rounded-full
-    text-center
-    transform
-  `;
-
   return (
     <a
-      className={navImageClasses}
+      className="
+      bg-purple-dark
+      border-2
+      border-gray-500
+      duration-300
+      ease-in-out
+      flex
+      h-16
+      w-16
+      hover:scale-125
+      hover:text-underline
+      items-center
+      justify-center
+      m-2
+      md:h-20
+      md:w-20
+      p-2
+      rounded-full
+      text-center
+      transform
+      "
       href={url}
       rel="noreferrer"
-      style={{backgroundColor: '#500b37'}}
+      // style={{backgroundColor: '#fff'}}
       target="_blank"
     >
       <img

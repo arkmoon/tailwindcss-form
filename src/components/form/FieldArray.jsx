@@ -13,7 +13,6 @@ function FieldArray({
   const {
     clearErrors,
     control,
-    formState: { errors },
   } = useFormContext(); // retrieve all hook methods
 
   const {
@@ -53,23 +52,22 @@ function FieldArray({
 
   return (
     <>
-      <div className="flex flex-col mb-4">
-        <div className="flex items-center border-b border-blue-500 py-2">
+      <div className="flex flex-col mb-16">
+        <div className="flex items-center pt-2 pb-4">
           <input
             aria-label={`Add a ${displayName}`}
             className="
               appearance-none
-              bg-transparent
-              border-none
               w-full
-            text-gray-700
+            text-gray-900
               mr-3
-              py-1
-              px-2
+              p-2
+              rounded
               leading-tight
-              focus:outline-none"
+            "
             key={id}
             id={id}
+            maxLength="34"
             name={id}
             onChange={handleNewFieldChange}
             ref={addNewRef}
@@ -78,7 +76,7 @@ function FieldArray({
           />
 
           <button
-            className="flex-shrink-0 text-sm bg-yellow-300 text-purple-dark shadow py-1 px-2 rounded font-bold"
+            className="flex-shrink-0 text-sm bg-yellow-300 text-purple-dark shadow p-2 rounded font-bold"
             type="button"
             onClick={addNew}>
               + Add<span className="sr-only"> {displayName}</span>
@@ -88,52 +86,37 @@ function FieldArray({
         {
           (fields && fields?.length)
             ? (
-              fields.map((item, index) => (
-                <Controller
-                  key={item.id}
-                  name={`${id}.${index}.value`}
-                  control={control}
-                  defaultValue={item.value}
-                  render={({ field }) => (
-                    <>
-                      <div className="flex items-center py-2">
-                        <input
-                          aria-label={`${displayName} #${index + 1}`}
-                          aria-describedby={`${displayName}-error-${index}`}
-                          className="
-                            appearance-none
-                            bg-transparent
-                            border-none
-                            w-full
-                          text-gray-700
-                            mr-3
-                            py-1
-                            px-2
-                            leading-tight
-                            focus:outline-none"
-                          key={`${id}.${index}.value`}
-                          type="text"
-                          {...field}
-                        />
-                        <button
-                          className="flex-shrink-0 text-sm bg-white text-purple-dark py-1 px-2 font-bold"
-                          type="button"
-                          onClick={removeField(index)}
-                        >
-                          - Delete<span className="sr-only"> {displayName}</span>
-                        </button>
-                      </div>
-                      {
-                        (errors[id])
-                          ? (
-                            <p className="text-red-800" id={`${displayName}-error-${index}`}>Error: {errors[id].message}</p>
-                          )
-                          : null
-                      }
-                    </>
-                  )}>
-                </Controller>
-              ))
+              <ul className="rounded bg-white text-gray-900 pl-4 leading-tight">
+                {
+                  (
+                    fields.map((item, index) => (
+                      <Controller
+                        key={item.id}
+                        name={`${id}.${index}.value`}
+                        control={control}
+                        defaultValue={item.value}
+                        render={({ field }) => (
+                          <div className="flex items-center">
+                            <li className="w-10/12 truncate" key={`${id}.${index}.value`}>
+                              {
+                                field?.value || ''
+                              }
+                            </li>
+
+                            <button
+                              className="p-2 w-2/12"
+                              type="button"
+                              onClick={removeField(index)}
+                            >
+                              <span>x<span className="sr-only"> remove {displayName}</span></span>
+                            </button>
+                          </div>
+                        )}>
+                      </Controller>
+                    ))
+                  )
+                }
+              </ul>
             )
             : null
         }
