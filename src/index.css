@@ -26,3 +26,29 @@
     transform: rotate(360deg);
   }
 }
+
+@media only screen and (min-width: 768px) {
+  .flip {
+    perspective: 37rem;
+  }
+  .flip-content {
+    transition: transform 0.5s;
+    transform-style: preserve-3d;
+  }
+  .flip.show-back .flip-content {
+    transform: rotateY(180deg);
+    transition: transform 0.5s;
+  }
+
+  .flip-front {
+    position: absolute;
+  }
+
+  .flip-front,
+  .flip-back {
+    backface-visibility: hidden;
+  }
+  .flip-back {
+    transform: rotateY(180deg);
+  }
+}

@@ -172,7 +172,7 @@ function Report() {
         tables.length
           ? (
             <div className="flex flex-row flex-wrap flex-1 flex-grow w-full pt-24">
-              <nav className="flex items-center justify-between flex-wrap bg-purple p-6 fixed w-full z-10 top-0">
+              <nav className="flex items-center justify-between flex-wrap p-6 fixed w-full z-10 top-0" style={{backgroundColor: '#1d0d23'}}>
                 <div className="flex items-center flex-shrink-0 text-white mr-6">
                   <Link className="hover:underline focus:underline text-white" to="/">
                     <span className="text-2xl pl-2">
