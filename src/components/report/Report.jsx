@@ -5,8 +5,8 @@ import { fileOutput } from './FileOutput';
 import Alert from '../alert/Alert';
 import { columnLabels, scrollTo } from '../../common/utils';
 import { useLocation } from 'react-router';
-import { Link } from 'react-router-dom';
 
+import { Link } from 'react-router-dom';
 
 function Report() {
   function dataTable(title, data) {
