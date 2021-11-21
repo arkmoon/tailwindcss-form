@@ -4,11 +4,11 @@ function DatatablePage(columns, rows) {
   return (
     <div
       className="
-              shadow
-              border-b border-gray-200
-              sm:rounded-lg
-              overflow-hidden
-            "
+        shadow
+        border-b border-gray-200
+        sm:rounded-lg
+        overflow-hidden
+      "
     >
       <table className="min-w-full divide-y divide-gray-200">
         <thead className="bg-gray-50">

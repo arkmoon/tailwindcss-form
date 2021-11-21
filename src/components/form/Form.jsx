@@ -78,7 +78,6 @@ function Form({
   let navigate = useNavigate();
 
   return (
-
     <form
       className="rounded-xl p-8"
       id="address-form"
@@ -88,9 +87,7 @@ function Form({
       {
         error
       }
-
       <FormProvider {...methods}>
-
         {
           (!isLoading)
             ?  (
@@ -104,12 +101,14 @@ function Form({
                       <div className="hidden md:inline-flex flex-shrink-0 w-10 h-10 rounded-full items-center justify-center text-white relative z-10 bg-gray-100">
                         <img className="w-5 h-5" src={HouseIcon} alt="house icon" aria-hidden="true" />
                       </div>
-                      <div className="flex-grow pl-4">
+                      <div className="flex-grow md:pl-4 md:mb-16">
                         <h2 className="font-medium title-font text-gray-100 mb-1 tracking-wider leading-normal">STEP 1</h2>
-                        <p className="leading-relaxed">Add your ARK addresses.</p>
+                        <p className="leading-relaxed">Add your addresses. At least 1 is required.</p>
                         <FieldArray
                           displayName="ARK Address"
                           id="addresses"
+                          maxLength={34}
+                          required={true}
                         />
                       </div>
                     </div>
@@ -118,14 +117,15 @@ function Form({
                         <div className="h-full w-1 bg-gray-100 pointer-events-none" />
                       </div>
                       <div className="hidden md:inline-flex flex-shrink-0 w-10 h-10 rounded-full items-center justify-center text-white relative z-10 bg-gray-100">
-                        <img className="w-5 h-5" src={CrossIcon} alt="cross icon" aria-hidden="true" />
+                        <img className="w-5 h-5" src={CrossIcon} alt="house icon" aria-hidden="true" />
                       </div>
-                      <div className="flex-grow pl-4">
+                      <div className="flex-grow md:pl-4 md:mb-16">
                         <h2 className="font-medium title-font text-gray-100 mb-1 tracking-wider leading-normal">STEP 2</h2>
-                        <p className="leading-relaxed">Add any excluded transactions that you might not want to count as income.</p>
+                        <p className="leading-relaxed">Enter transaction IDs you want to exclude (optional).</p>
                         <FieldArray
                           displayName="Excluded Transaction"
                           id="exceptions"
+                          maxLength={64}
                         />
                       </div>
                     </div>
@@ -136,10 +136,13 @@ function Form({
                       <div className="hidden md:inline-flex flex-shrink-0 w-10 h-10 rounded-full items-center justify-center text-white relative z-10 bg-gray-100">
                         <img className="w-5 h-5" src={FlagIcon} alt="flag icon" aria-hidden="true" />
                       </div>
-                      <div className="flex-grow pl-4">
+                      <div className="flex-grow md:pl-4 md:mb-16">
                         <h2 className="font-medium title-font text-gray-100 mb-1 tracking-wider leading-normal">FINISH</h2>
-                        <p className="leading-relaxed">Submit your data and see how much income was made.</p>
-                        <button className="bg-yellow-300 text-purple-dark rounded shadow font-bold uppercase text-lg mx-auto p-4 w-full mt-8" type="submit">Submit</button>
+                        <p className="leading-relaxed">Submit to calculate how much income was made.</p>
+
+                        <div className="flex mb-16 w-full pr-4">
+                          <button className="rounded-lg bg-yellow-400 text-gray-800 font-bold p-4 uppercase border-yellow-500 border mt-4 w-full" type="submit">Submit</button>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -155,7 +158,7 @@ function Form({
 }
 
 Form.propTypes = {
-  isLoading: PropTypes.func,
+  isLoading: PropTypes.bool,
   setIsLoading: PropTypes.func,
 };
 
