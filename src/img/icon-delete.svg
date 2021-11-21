@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="32" height="32" version="1.1" xmlns="http://www.w3.org/2000/svg">
+ <g>
+  <path d="M12 12h2v12h-2z" fill="#ffffff" />
+  <path d="M18 12h2v12h-2z" fill="#ffffff" />
+  <path d="M4 6v2h2v20a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8h2V6zm4 22V8h16v20z" fill="#ffffff" />
+  <path d="M12 2h8v2h-8z" fill="#ffffff" />
+ </g>
+</svg>

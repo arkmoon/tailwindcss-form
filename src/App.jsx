@@ -5,6 +5,7 @@ import AstroMan from './img/astroman.jpg';
 import Form from './components/form/Form';
 import NavIcon from './components/nav/NavIcon';
 import Loading from './components/loading/Loading';
+import Footer from './components/footer/Footer';
 
 function App() {
   function handleGetStarted() {
@@ -23,7 +24,7 @@ function App() {
   const loadingRef = React.createRef();
 
   return (
-    <div className="bg-gray-100">
+    <div className="bg-gray-900 text-gray-100">
       {
         (isLoading)
           ? (
@@ -34,13 +35,13 @@ function App() {
 
       <section className="min-h-screen pt-20 relative" style={{backgroundColor: '#1d0d23'}}>
         <div className="container px-3 mx-auto flex flex-wrap flex-col md:flex-row items-top text-white">
-          <div className="md:w-1/2 justify-center min-h-screen">
+          <div className="md:w-1/2 justify-center">
             <img className="w-auto max-h-screen mx-auto" src={AstroMan} />
           </div>
           <div className="overflow-visible md:w-1/2">
             <div className={`flip ${(showForm) ? 'show-back' : ''}`}>
               <div className="flip-content">
-                <div className="flip-front filter drop-shadow px-16 md:px-4 flex justify-center items-center h-full">
+                <div className="flip-front filter drop-shadow px-8 md:px-4 flex justify-center items-center h-full">
                   <div>
                     <h1 className="text-5xl font-bold leading-tight">
                     ARK Income Estimator
@@ -88,10 +89,7 @@ function App() {
         </div>
       </nav>
 
-      <footer className="text-center py-12">
-        <p><sup>*</sup>This software does not constitute formal tax advice. For educational purposes only.</p>
-        <p>&copy; 2021 Delegate Goose and Delegate ArkMoon</p>
-      </footer>
+      <Footer />
     </div>
   );
 }
