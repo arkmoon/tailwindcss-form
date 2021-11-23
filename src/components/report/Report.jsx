@@ -74,9 +74,17 @@ function Report() {
   }
 
   const classes = {
-    active: 'text-gray-100 py-4 px-6 block hover:underline focus:underline border-b-2 font-medium border-white',
-    inactive: 'text-gray-100 py-4 px-6 block hover:underline focus:underline',
+    active: 'text-gray-100 py-4 px-4 block hover:underline focus:underline border-b-2 font-medium border-white',
+    inactive: 'text-gray-100 py-4 px-4 block hover:underline focus:underline',
   };
+
+  React.useEffect(() => {
+    document.body.classList.add('texturedBg');
+
+    return(() => {
+      document.body.classList.remove('texturedBg');
+    });
+  });
 
   return (
     <>
@@ -102,7 +110,7 @@ function Report() {
           ? (
             <div className="min-h-screen">
               <div className="flex flex-row flex-wrap flex-1 flex-grow w-full">
-                <nav className="flex flex-col sm:flex-row mx-auto">
+                <nav className="flex flex-row mx-auto">
                   <button className={classes[(activeTab === 0) ? 'active' : 'inactive']} onClick={handleActiveTab(0)}>
                     Summary
                   </button>
