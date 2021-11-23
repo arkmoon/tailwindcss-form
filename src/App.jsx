@@ -24,7 +24,7 @@ function App() {
   const loadingRef = React.createRef();
 
   return (
-    <div className="bg-gray-900 text-gray-100">
+    <div className="text-gray-100">
       {
         (isLoading)
           ? (
@@ -89,7 +89,9 @@ function App() {
         </div>
       </nav>
 
-      <Footer />
+      <div className="w-full bg-gray-900 text-gray-100">
+        <Footer />
+      </div>
     </div>
   );
 }

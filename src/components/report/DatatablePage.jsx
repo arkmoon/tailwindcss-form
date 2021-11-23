@@ -95,15 +95,15 @@ function DatatablePage(cols = [], rowsData = [], title = '') {
           </tbody>
         </table>
       </div>
-      <div className="flex flex-row items-center justify-between my-8">
+      <div className="flex flex-col sm:flex-row items-center justify-between">
 
         {
-          <button className="rounded-lg bg-yellow-400 text-gray-800 font-bold p-4 uppercase border-yellow-500 border mt-4" onClick={fileOutput(title, cols, rowsData)}>
+          <button className="rounded-lg bg-yellow-400 text-gray-800 font-bold my-4 p-4 uppercase border-yellow-500 border mt-4" onClick={fileOutput(title, cols, rowsData)}>
             Download {title} CSV
           </button>
         }
 
-        <div className="flex text-gray-700">
+        <div className="flex text-gray-700 my-2">
           {
             (pageCount > 1)
               ? (
