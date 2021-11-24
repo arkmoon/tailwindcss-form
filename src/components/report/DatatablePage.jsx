@@ -28,7 +28,7 @@ function DatatablePage(cols = [], rowsData = [], title = '') {
     {
       columns,
       data,
-      initialState: { pageIndex: 0, pageSize: 50 },
+      initialState: { pageIndex: 0, pageSize: 10 },
     },
     usePagination
   );

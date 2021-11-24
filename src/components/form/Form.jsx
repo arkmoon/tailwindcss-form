@@ -137,7 +137,7 @@ function Form({
                               </svg>
                             </a>
                             <div className={`absolute bottom-0 flex flex-col items-center mb-6 group-hover:flex ${(toolTips[1]) ? '' : 'hidden'}`} id="tooltip-1" role="region" tabIndex="-1" ref={refArr[0]}>
-                              <span className="relative z-10 p-2 text-white bg-black shadow-lg min-w-max rounded-lg border-2 border-white font-mono text-xs">A top aligned tooltip.</span>
+                              <span className="relative z-10 p-2 text-white bg-black shadow-lg min-w-max rounded-lg border-2 border-white font-mono text-xs">Add one or multiple Ark addresses to calculate estimated income / taxes. Delegate addresses are currently not supported.</span>
                               <div className="w-3 h-3 -mt-2 rotate-45 bg-black" />
                             </div>
                           </div>
@@ -172,7 +172,7 @@ function Form({
                               </svg>
                             </a>
                             <div className={`absolute bottom-0 flex flex-col items-center mb-6 group-hover:flex ${(toolTips[2]) ? '' : 'hidden'}`} id="tooltip-2" role="region" tabIndex="-1" ref={refArr[1]}>
-                              <span className="relative z-10 p-2 text-white bg-black shadow-lg min-w-max rounded-lg border-2 border-white font-mono text-xs">A top aligned tooltip.</span>
+                              <span className="relative z-10 p-2 text-white bg-black shadow-lg min-w-max rounded-lg border-2 border-white font-mono text-xs">Excluded transactions are those you would like to exclude for calculation purposes. For example you sent funds to an exchange and immediately withdrew without trading. This would prevent transactions from looking like buys/sales or income as appropriate.</span>
                               <div className="w-3 h-3 -mt-2 rotate-45 bg-black" />
                             </div>
                           </div>
