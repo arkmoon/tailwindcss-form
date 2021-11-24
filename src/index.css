@@ -52,3 +52,44 @@
     transform: rotateY(180deg);
   }
 }
+
+/**
+ * Tooltips *
+ */
+
+.w-tooltip {
+  width: 13rem;
+}
+
+@media (min-width: 640px) {
+  .w-tooltip {
+    width: 32rem;
+  }
+ }
+@media (min-width: 768px) {
+  .w-tooltip {
+    width: 12rem;
+  }
+ }
+@media (min-width: 1024px) {
+  .w-tooltip {
+    width: 20rem;
+  }
+ }
+@media (min-width: 1280px) {
+  .w-tooltip {
+    width: 28rem;
+  }
+ }
+@media (min-width: 1536px) {
+  .w-tooltip {
+    width: 36rem;
+  }
+ }
+
+
+
+
+
+
+

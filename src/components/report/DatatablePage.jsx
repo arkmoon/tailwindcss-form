@@ -38,10 +38,11 @@ function DatatablePage(cols = [], rowsData = [], title = '') {
       <div
         className="
           border-b
+        border-gray-200
+          mb-4
           overflow-y-auto
           shadow
           sm:rounded-lg
-        border-gray-200
         "
       >
         <table className="min-w-full divide-y divide-gray-200" {...getTableProps()}>
@@ -96,9 +97,8 @@ function DatatablePage(cols = [], rowsData = [], title = '') {
         </table>
       </div>
       <div className="flex flex-col sm:flex-row items-center justify-between">
-
         {
-          <button className="rounded-lg bg-yellow-400 text-gray-800 font-bold my-4 p-4 uppercase border-yellow-500 border mt-4" onClick={fileOutput(title, cols, rowsData)}>
+          <button className="flex h-12 font-medium rounded-lg items-center px-4 bg-yellow-400" onClick={fileOutput(title, cols, rowsData)}>
             Download {title} CSV
           </button>
         }

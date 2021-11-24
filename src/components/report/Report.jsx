@@ -74,15 +74,15 @@ function Report() {
   }
 
   const classes = {
-    active: 'text-gray-100 py-4 px-4 block hover:underline focus:underline border-b-2 font-medium border-white',
-    inactive: 'text-gray-100 py-4 px-4 block hover:underline focus:underline',
+    active: 'flex bg-purple-dark text-gray-100 py-4 px-4 hover:underline focus:underline border-b-2 font-medium border-white',
+    inactive: 'flex bg-purple-dark text-gray-100 py-4 px-4 hover:underline focus:underline',
   };
 
   React.useEffect(() => {
-    document.body.classList.add('texturedBg');
+    document.body.classList.add('radialBg');
 
     return(() => {
-      document.body.classList.remove('texturedBg');
+      document.body.classList.remove('radialBg');
     });
   });
 

@@ -110,7 +110,7 @@ function FieldArray({
                           {...field}
                         />
                         <button
-                          className="rounded-r-lg bg-purple-dark  text-gray-800 font-bold p-4 uppercase border-purple-dark border-t border-b border-r min-w-max"
+                          className="rounded-r-lg bg-red-800 text-gray-800 font-bold p-4 uppercase border-red-800 border-t border-b border-r min-w-max"
                           onClick={removeField(index)}
                         >
                           <img aria-hidden="true" className="w-5 h-5" src={DeleteIcon} alt="delete icon" />
