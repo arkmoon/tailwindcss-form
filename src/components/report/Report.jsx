@@ -74,8 +74,8 @@ function Report() {
   }
 
   const classes = {
-    active: 'flex bg-purple-dark text-gray-100 py-4 px-4 hover:underline focus:underline border-b-2 font-medium border-white',
-    inactive: 'flex bg-purple-dark text-gray-100 py-4 px-4 hover:underline focus:underline',
+    active: 'flex mx-4 rounded-lg text-gray-100 p-4 hover:underline focus:underline font-medium underline shadow',
+    inactive: 'flex mx-4 rounded-lg text-gray-100 p-4 hover:underline focus:underline',
   };
 
   React.useEffect(() => {
@@ -91,7 +91,7 @@ function Report() {
       <h1 className="sr-only">Report</h1>
       <div className="flex flex-wrap place-items-top">
         <section className="relative mx-auto">
-          <nav className="flex justify-between bg-gray-900 text-white mb-8 rounded-b-lg">
+          <nav className="flex justify-between bg-gray-900 text-white mb-4 rounded-b-lg">
             <div className="px-5 xl:px-12 py-2 flex w-full items-center">
               <ul className="md:flex px-4 font-semibold font-heading space-x-12">
                 <li>
@@ -111,16 +111,16 @@ function Report() {
             <div className="min-h-screen">
               <div className="flex flex-row flex-wrap flex-1 flex-grow w-full">
                 <nav className="flex flex-row mx-auto">
-                  <button className={classes[(activeTab === 0) ? 'active' : 'inactive']} onClick={handleActiveTab(0)}>
+                  <button className={classes[(activeTab === 0) ? 'active' : 'inactive']} onClick={handleActiveTab(0)} style={{backgroundColor: '#008080'}}>
                     Summary
                   </button>
-                  <button className={classes[(activeTab === 1) ? 'active' : 'inactive']} onClick={handleActiveTab(1)}>
+                  <button className={classes[(activeTab === 1) ? 'active' : 'inactive']} onClick={handleActiveTab(1)} style={{backgroundColor: '#008080'}}>
                     Buys
                   </button>
-                  <button className={classes[(activeTab === 2) ? 'active' : 'inactive']} onClick={handleActiveTab(2)}>
+                  <button className={classes[(activeTab === 2) ? 'active' : 'inactive']} onClick={handleActiveTab(2)} style={{backgroundColor: '#008080'}}>
                     Sells
                   </button>
-                  <button className={classes[(activeTab === 3) ? 'active' : 'inactive']} onClick={handleActiveTab(3)}>
+                  <button className={classes[(activeTab === 3) ? 'active' : 'inactive']} onClick={handleActiveTab(3)} style={{backgroundColor: '#008080'}}>
                     8949
                   </button>
                 </nav>
