@@ -89,7 +89,7 @@ function App() {
         </div>
       </nav>
 
-      <div className="w-full bg-gray-900 text-gray-100">
+      <div className="w-full text-gray-100">
         <Footer />
       </div>
     </div>
