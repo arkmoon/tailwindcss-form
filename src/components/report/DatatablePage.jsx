@@ -111,7 +111,7 @@ function DatatablePage(cols = [], rowsData = [], title = '') {
             (pageCount > 1)
               ? (
                 <button
-                  className="h-12 w-12 mr-1 flex justify-center items-center rounded-full bg-gray-200 cursor-pointer disabled:opacity-50"
+                  className="h-12 w-12 mr-1 flex justify-center items-center rounded-lg bg-gray-200 cursor-pointer disabled:opacity-50"
                   disabled={!canPreviousPage}
                   onClick={() => previousPage()}
                 >
@@ -137,7 +137,7 @@ function DatatablePage(cols = [], rowsData = [], title = '') {
             (pageCount > 1)
               ? (
                 <button
-                  className="h-12 w-12 ml-1 flex justify-center items-center rounded-full bg-gray-200 cursor-pointer disabled:opacity-50"
+                  className="h-12 w-12 ml-1 flex justify-center items-center rounded-lg bg-gray-200 cursor-pointer disabled:opacity-50"
                   disabled={!canNextPage}
                   onClick={() => nextPage()}
                 >
