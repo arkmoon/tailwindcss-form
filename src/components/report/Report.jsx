@@ -74,8 +74,8 @@ function Report() {
   }
 
   const classes = {
-    active: 'flex mx-4 rounded-lg text-gray-100 p-4 hover:underline focus:underline font-medium underline shadow',
-    inactive: 'flex mx-4 rounded-lg text-gray-100 p-4 hover:underline focus:underline',
+    active: 'flex mx-1 rounded-lg text-gray-100 p-3 hover:underline focus:underline font-medium underline shadow',
+    inactive: 'flex mx-1 rounded-lg text-gray-100 p-3 hover:underline focus:underline',
   };
 
   React.useEffect(() => {
