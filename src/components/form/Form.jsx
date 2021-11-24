@@ -136,7 +136,7 @@ function Form({
                                 <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-3a1 1 0 00-.867.5 1 1 0 11-1.731-1A3 3 0 0113 8a3.001 3.001 0 01-2 2.83V11a1 1 0 11-2 0v-1a1 1 0 011-1 1 1 0 100-2zm0 8a1 1 0 100-2 1 1 0 000 2z" clipRule="evenodd" />
                               </svg>
                             </a>
-                            <div className={`focus:outline-none focus:underline absolute bottom-0 flex flex-col items-center mb-6 group-hover:flex ${(toolTips[1]) ? '' : 'hidden'}`} id="tooltip-1" role="region" tabIndex="-1" ref={refArr[0]}>
+                            <div className={`absolute bottom-0 flex flex-col items-center mb-6 group-hover:flex ${(toolTips[1]) ? '' : 'hidden'}`} id="tooltip-1" role="region" tabIndex="-1" ref={refArr[0]}>
                               <span className="relative z-10 p-2 text-white bg-black shadow-lg w-tooltip rounded-lg border-2 border-white font-mono text-xs">Add one or multiple Ark addresses to calculate estimated income / taxes. Delegate addresses are currently not supported.</span>
                               <div className="w-3 h-3 -mt-2 rotate-45 bg-black" />
                             </div>
@@ -171,7 +171,7 @@ function Form({
                                 <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-3a1 1 0 00-.867.5 1 1 0 11-1.731-1A3 3 0 0113 8a3.001 3.001 0 01-2 2.83V11a1 1 0 11-2 0v-1a1 1 0 011-1 1 1 0 100-2zm0 8a1 1 0 100-2 1 1 0 000 2z" clipRule="evenodd" />
                               </svg>
                             </a>
-                            <div className={`focus:outline-none focus:underline absolute bottom-0 flex flex-col items-center mb-6 group-hover:flex ${(toolTips[2]) ? '' : 'hidden'}`} id="tooltip-2" role="region" tabIndex="-1" ref={refArr[1]}>
+                            <div className={`absolute bottom-0 flex flex-col items-center mb-6 group-hover:flex ${(toolTips[2]) ? '' : 'hidden'}`} id="tooltip-2" role="region" tabIndex="-1" ref={refArr[1]}>
                               <span className="relative z-10 p-2 text-white bg-black shadow-lg w-tooltip rounded-lg border-2 border-white font-mono text-xs">Excluded transactions are those you would like to exclude for calculation purposes. For example you sent funds to an exchange and immediately withdrew without trading. This would prevent transactions from looking like buys/sales or income as appropriate.</span>
                               <div className="w-3 h-3 -mt-2 rotate-45 bg-black" />
                             </div>
