@@ -28,7 +28,11 @@ function DatatablePage(cols = [], rowsData = [], title = '') {
     {
       columns,
       data,
-      initialState: { pageIndex: 0, pageSize: 10 },
+      initialState: {
+        pageIndex: 0,
+        pageSize: 10,
+        hiddenColumns: ['senderId', 'recipientId']
+      },
     },
     usePagination
   );
@@ -56,7 +60,8 @@ function DatatablePage(cols = [], rowsData = [], title = '') {
                     className="
                       px-6
                       py-3
-                      text-left text-xs
+                      text-left
+                      text-xs
                       font-medium
                       text-gray-500
                       uppercase
@@ -77,14 +82,12 @@ function DatatablePage(cols = [], rowsData = [], title = '') {
                 <tr key={row?.id} {...row.getRowProps()}>
                   {row.cells.map(cell => {
                     return (
-                      <td className="px-6 py-4 whitespace-nowrap" key={cell?.id}
+                      <td className="px-6 py-2 whitespace-nowrap" key={cell?.id}
                         {...cell.getCellProps()}
                       >
                         <div className="flex items-center">
-                          <div className="ml-4">
-                            <div className="text-sm font-medium text-gray-900">
-                              {cell.render('Cell')}
-                            </div>
+                          <div className="text-xs font-medium text-gray-900">
+                            {cell.render('Cell')}
                           </div>
                         </div>
                       </td>
